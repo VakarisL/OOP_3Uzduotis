@@ -5,6 +5,7 @@
 #include <chrono>
 #include <numeric>
 #include <algorithm>
+#include <iomanip>
 
 
 //declarations
@@ -56,8 +57,8 @@ int main(){
     std::cout << "Namu darbu "<< ++counter << " pazymys: "<< i <<std::endl;
   }
   std::cout << "Egzamino pazymys: " << *egzaminas << std::endl;
-  std::cout << "Galutinis balas (naudojant vidurki): " << galBalasVid << std::endl;
-  std::cout << "Galutinis balas (naudojant mediana): " << galBalasMed << std::endl;
+  std::cout << "Galutinis balas (naudojant vidurki): " << std::setprecision(2) << std::fixed << galBalasVid << std::endl;
+  std::cout << "Galutinis balas (naudojant mediana): " << std::setprecision(2) << std::fixed <<galBalasMed << std::endl;
 }
 
 //functions
