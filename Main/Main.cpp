@@ -25,6 +25,8 @@ void generate_values(std::vector<int> *ivertinimai, int *egzaminas);  // functio
 double darbuVidurkis(std::vector<int> *ivertinimai);  // calculates and returns the arithmetic mean of the vector elements;
 double darbuMediana(std::vector<int> ivertinimai);  // creates placeholder vector, sorts it, finds and returns the median of sorted values;
 void read_data(std::vector<studentaiInfo>& studentai); //reads the data from file into a vector of structures
+void write_data(std::vector<studentaiInfo> studentai); // calculates and outputs the final result from a vector of 'studentaiInfo'
+bool compareNames(const studentaiInfo& a, const studentaiInfo& b) {return a.vardas < b.vardas;} // comparison function that allows us to sort vector of 'studentaiInfo' by 'vardas'
 
 
 
@@ -44,7 +46,7 @@ int main() {
 		std::cout << "2- Generuoti atsitiktinius pazymius" << std::endl;
 		std::cout << "3- Skaityti pazymius is failo" << std::endl;
 		std::cin >> choice;
-	} while (choice != 1 && choice != 2 && choice!=3);
+	} while (choice != 1 && choice != 2 && choice != 3);
 
 	switch (choice) {
 	case 1: {
@@ -68,7 +70,7 @@ int main() {
 		std::cout << "Egzamino pazymys: " << *egzaminas << std::endl;
 		std::cout << "Galutinis balas (naudojant vidurki): " << std::setprecision(2) << std::fixed << galBalasVid << std::endl;
 		std::cout << "Galutinis balas (naudojant mediana): " << std::setprecision(2) << std::fixed << galBalasMed << std::endl;
-	
+
 		break;
 	}
 	case 2: {
@@ -97,14 +99,17 @@ int main() {
 	case 3: {
 		std::vector<studentaiInfo> studentai;
 		read_data(studentai);
-		std::cout << studentai[1].egzaminas <<std::endl;
-		//do stuff
-		//write_data();
+		//std::cout << studentai[1].egzaminas <<std::endl;
+		for (size_t i = 0; i < studentai.size(); i++) {
+			studentai[i].average = darbuVidurkis(&studentai[i].nDarbai);
+			studentai[i].median = darbuMediana(studentai[i].nDarbai);
+		}
+		write_data(studentai);
 		break;
 	}
 	}
 
-	
+
 }
 
 //functions
@@ -163,23 +168,35 @@ double darbuMediana(std::vector<int> ivertinimai) {
 	}
 }
 
-void read_data(std::vector<studentaiInfo>& studentai){
+void read_data(std::vector<studentaiInfo>& studentai) {
 	std::ifstream input;
 	input.open("Resources/Kursiokai.txt");
 	int tempPazymys;
 	std::string tempString;
-	size_t counter=0;
-	while(input >> tempString){
+	size_t counter = 0;
+	while (input >> tempString) {
 		studentai.push_back(studentaiInfo());
 		studentai[counter].pavarde.append(tempString);
 		input >> tempString;
 		studentai[counter].vardas.append(tempString);
-		for(size_t i=0; i<5;i++){
+		for (size_t i = 0; i < 5; i++) {
 			input >> tempPazymys;
 			studentai[counter].nDarbai.push_back(tempPazymys);
 		}
 		input >> tempPazymys;
-		studentai[counter].egzaminas=tempPazymys;
+		studentai[counter].egzaminas = tempPazymys;
 		counter++;
+	}
+	input.close();
+}
+
+void write_data(std::vector<studentaiInfo> studentai) {
+	std::sort(studentai.begin(), studentai.end(), compareNames);
+	std::cout << std::left << std::setw(20) << "Pavarde" << std::setw(20) << "Vardas" << std::setw(20) <<
+	          "Galutinis-Vidurkis" << std::setw(20) << "Galutinis-Mediana" << std::endl;
+	for (size_t i = 0; i < studentai.size(); i++) {
+		std::cout << std::left << std::setw(20) << studentai[i].pavarde << std::setw(20) << studentai[i].vardas <<
+		          std::setprecision(2) << std::fixed << std::setw(20) << 0.4 * studentai[i].average + studentai[i].egzaminas * 0.6 <<
+		          std::setw(20) << 0.4 * studentai[i].median + studentai[i].egzaminas * 0.6 << std::endl;
 	}
 }
