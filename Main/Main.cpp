@@ -170,7 +170,7 @@ double darbuMediana(std::vector<int> ivertinimai) {
 
 void read_data(std::vector<studentaiInfo>& studentai) {
 	std::ifstream input;
-	input.open("Resources/Kursiokai.txt");
+	input.open("Main/Resources/Kursiokai.txt");
 	int tempPazymys;
 	std::string tempString;
 	size_t counter = 0;
