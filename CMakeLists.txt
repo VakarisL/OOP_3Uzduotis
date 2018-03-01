@@ -7,5 +7,7 @@ add_executable(
 	main
 	Main/main.cpp
 	Main/FileInput.cpp
+	Main/ConsoleInput.cpp
 	Main/Headers/FileInput.h
+	Main/Headers/ConsoleInput.h
 )

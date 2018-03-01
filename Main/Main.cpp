@@ -9,13 +9,14 @@
 #include <fstream>
 
 #include "../Main/Headers/FileInput.h"
+#include "../Main/Headers/ConsoleInput.h"
 
 
 //declarations
 //#######################################################################
 
 
-void input_by_hand(std::vector<int> *ivertinimai, int *egzaminas);  // function that lets you enter 'any' amount of values by hand;
+
 void generate_values(std::vector<int> *ivertinimai, int *egzaminas);  // function that generates a selected number of values pseudorandomly;
 double darbuVidurkis(std::vector<int> *ivertinimai);  // calculates and returns the arithmetic mean of the vector elements;
 double darbuMediana(std::vector<int> ivertinimai);  // creates placeholder vector, sorts it, finds and returns the median of sorted values;
@@ -105,28 +106,7 @@ int main() {
 
 //functions
 //#######################################################################
-void input_by_hand(std::vector<int> *ivertinimai, int *egzaminas) {
-	std::cout << "Iveskite namu darbu pazymius (-1 norint uzbaigti)" << std::endl;
 
-	int pazymys = 0, counter = 1;
-	do {
-		std::cout << "iveskite " << counter << " pazymi: ";
-		std::cin >> pazymys;
-		if (pazymys <= 10 &&  pazymys >= 0) {
-			ivertinimai->push_back(pazymys);
-			counter++;
-		} else {
-			if (pazymys != (-1)) {
-				std::cout << "Ivestas ivertinimas nepriklauso desimtbalei sistemai" << std::endl;
-				pazymys = 0;
-			}
-		}
-	} while (pazymys != (-1));
-
-	std::cout << "iveskite egzamino pazymi: ";
-	std::cin >> *egzaminas;
-
-}
 
 void generate_values(std::vector<int> *ivertinimai, int *egzaminas) {
 	std::mt19937 mt(static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
