@@ -9,7 +9,15 @@
 
 void read_data(std::vector<studentaiInfo>& studentai) {
 	std::ifstream input;
-	input.open("Main/Resources/Kursiokai.txt");
+
+	try {
+		input.open("Main/Resources/Kursiokai.txt");
+		if(input.fail()) throw "Failas nerastas folderyje";
+	} catch (const char* e) {
+		std::cout << e << std::endl;
+		std::exit(EXIT_SUCCESS);
+	}
+
 	int tempPazymys;
 	std::string tempString;
 	size_t counter = 0;

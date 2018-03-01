@@ -76,7 +76,6 @@ int main() {
 	case 3: {
 		std::vector<studentaiInfo> studentai;
 		read_data(studentai);
-		//std::cout << studentai[1].egzaminas <<std::endl;
 		for (size_t i = 0; i < studentai.size(); i++) {
 			studentai[i].average = darbuVidurkis(&studentai[i].nDarbai);
 			studentai[i].median = darbuMediana(studentai[i].nDarbai);
