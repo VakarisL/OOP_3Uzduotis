@@ -1,29 +1,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <random>
-#include <chrono>
-#include <numeric>
-#include <algorithm>
 #include <iomanip>
-#include <fstream>
 
 #include "../Main/Headers/FileInput.h"
 #include "../Main/Headers/ConsoleInput.h"
+#include "../Main/Headers/RandomInput.h"
+#include "../Main/Headers/MathFunctions.h"
 
 
-//declarations
-//#######################################################################
-
-
-
-void generate_values(std::vector<int> *ivertinimai, int *egzaminas);  // function that generates a selected number of values pseudorandomly;
-double darbuVidurkis(std::vector<int> *ivertinimai);  // calculates and returns the arithmetic mean of the vector elements;
-double darbuMediana(std::vector<int> ivertinimai);  // creates placeholder vector, sorts it, finds and returns the median of sorted values;
-
-
-//main
-//#######################################################################
 int main() {
 
 
@@ -100,42 +85,4 @@ int main() {
 		break;
 	}
 	}
-
-
 }
-
-//functions
-//#######################################################################
-
-
-void generate_values(std::vector<int> *ivertinimai, int *egzaminas) {
-	std::mt19937 mt(static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
-	std::uniform_int_distribution<int> dist(1, 10);
-
-	int kiekis = 0;
-	std::cout << "Kiek pazymiu noretumete sugeneruoti?" << std::endl;
-	std::cin >> kiekis;
-
-	for (int i = 0; i < kiekis; i++) {
-		ivertinimai->push_back(dist(mt));
-	}
-
-	*egzaminas = dist(mt);
-}
-
-double darbuVidurkis(std::vector<int> *ivertinimai) {
-	return ((double) std::accumulate(ivertinimai->begin(), ivertinimai->end(), 0.0) / ivertinimai->size());
-}
-
-double darbuMediana(std::vector<int> ivertinimai) {
-	std::vector<int> *tempVector = new std::vector<int>;
-	*tempVector = ivertinimai;
-	std::sort(tempVector->begin(), tempVector->end());
-	if (tempVector->size() % 2 == 1) {
-		return tempVector->operator[]((tempVector->size() - 1) / 2);
-	} else {
-		return ((double)tempVector->operator[]((tempVector->size() - 1) / 2) / 2 +
-		        (double)tempVector->operator[]((tempVector->size() - 1) / 2 + 1) / 2);
-	}
-}
-
