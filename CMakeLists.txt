@@ -10,8 +10,10 @@ add_executable(
 	Main/ConsoleInput.cpp
 	Main/RandomInput.cpp
 	Main/MathFunctions.cpp
+	Main/ConsoleOutput.cpp
 	Main/Headers/FileInput.h
 	Main/Headers/ConsoleInput.h
 	Main/Headers/RandomInput.h
 	Main/Headers/MathFunctions.h
+	Main/Headers/ConsoleOutput.h
 )
