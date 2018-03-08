@@ -16,13 +16,7 @@ int main() {
 	double galBalasVid, galBalasMed;
 
 	int choice = 0;
-	do {
-		std::cout << "Ar norite:" << std::endl;
-		std::cout << "1- Irasyti pazymius ranka" << std::endl;
-		std::cout << "2- Generuoti atsitiktinius pazymius" << std::endl;
-		std::cout << "3- Skaityti pazymius is failo" << std::endl;
-		std::cin >> choice;
-	} while (choice != 1 && choice != 2 && choice != 3);
+	MainMenu(choice);
 
 	switch (choice) {
 	case 1: {
