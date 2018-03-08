@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "../Main/Headers/ConsoleInput.h"
 
@@ -23,4 +24,11 @@ void input_by_hand(std::vector<int> *ivertinimai, int *egzaminas) {
 
 	std::cout << "iveskite egzamino pazymi: ";
 	std::cin >> *egzaminas;
+}
+
+void InitialInfo(std::string& vardas, std::string& pavarde) {
+	std::cout << "Iveskite studento varda: " << std::endl;
+	std::cin >> vardas;
+	std::cout << "Iveskite studento pavarde: " << std::endl;
+	std::cin >> pavarde;
 }

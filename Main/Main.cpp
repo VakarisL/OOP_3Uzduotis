@@ -8,10 +8,6 @@
 #include "../Main/Headers/MathFunctions.h"
 #include "../Main/Headers/ConsoleOutput.h"
 
-
-
-void output(double galBalasVid, double galBalasMed, int *egzaminas, std::vector<int> *ivertinimai, std::string vardas, std::string pavarde);
-
 int main() {
 
 
@@ -31,24 +27,16 @@ int main() {
 	switch (choice) {
 	case 1: {
 		std::string vardas, pavarde;
-		std::cout << "Iveskite studento varda: " << std::endl;
-		std::cin >> vardas;
-		std::cout << "Iveskite studento pavarde: " << std::endl;
-		std::cin >> pavarde;
+		InitialInfo(vardas, pavarde);
 		input_by_hand(ivertinimai, egzaminas);
-
-		output(galBalasVid,galBalasMed,egzaminas,ivertinimai, vardas, pavarde);
+		output(galBalasVid, galBalasMed, egzaminas, ivertinimai, vardas, pavarde);
 		break;
 	}
 	case 2: {
 		std::string vardas, pavarde;
-		std::cout << "Iveskite studento varda: " << std::endl;
-		std::cin >> vardas;
-		std::cout << "Iveskite studento pavarde: " << std::endl;
-		std::cin >> pavarde;
+		InitialInfo(vardas, pavarde);
 		generate_values(ivertinimai, egzaminas);
-
-		output(galBalasVid,galBalasMed,egzaminas,ivertinimai, vardas, pavarde);
+		output(galBalasVid, galBalasMed, egzaminas, ivertinimai, vardas, pavarde);
 		break;
 	}
 	case 3: {
