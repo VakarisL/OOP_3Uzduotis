@@ -43,6 +43,9 @@ int main() {
 		write_data(studentai);
 		break;
 	}
+	default: {
+		std::cout << "Ivyko switch klaida" << std::endl;
+	}
 	}
 }
 
