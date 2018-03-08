@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <limits>
 
 #include "../Main/Headers/ConsoleInput.h"
 
@@ -10,7 +11,11 @@ void input_by_hand(std::vector<int> *ivertinimai, int *egzaminas) {
 	int pazymys = 0, counter = 1;
 	do {
 		std::cout << "iveskite " << counter << " pazymi: ";
-		std::cin >> pazymys;
+		if (!(std::cin >> pazymys)) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (pazymys <= 10 &&  pazymys >= 0) {
 			ivertinimai->push_back(pazymys);
 			counter++;
@@ -22,8 +27,19 @@ void input_by_hand(std::vector<int> *ivertinimai, int *egzaminas) {
 		}
 	} while (pazymys != (-1));
 
-	std::cout << "iveskite egzamino pazymi: ";
-	std::cin >> *egzaminas;
+
+	do {
+		std::cout << "iveskite egzamino pazymi: ";
+		if (!(std::cin >> pazymys)) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		} else {*egzaminas = pazymys;}
+		if (pazymys > 10 || pazymys <= 0) {
+			std::cout << "Ivestas ivertinimas nepriklauso desimtbalei sistemai" << std::endl;
+			pazymys = 0;
+		}
+	} while (pazymys > 10 || pazymys < 1);
 }
 
 void InitialInfo(std::string& vardas, std::string& pavarde) {
@@ -39,6 +55,9 @@ void MainMenu(int& choice) {
 		std::cout << "1- Irasyti pazymius ranka" << std::endl;
 		std::cout << "2- Generuoti atsitiktinius pazymius" << std::endl;
 		std::cout << "3- Skaityti pazymius is failo" << std::endl;
-		std::cin >> choice;
+		if (!(std::cin >> choice)) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		};
 	} while (choice != 1 && choice != 2 && choice != 3);
 }
