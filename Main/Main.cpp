@@ -9,17 +9,14 @@
 #include "../Main/Headers/ConsoleOutput.h"
 
 int main() {
-
-
-	std::vector<int> *ivertinimai = new std::vector<int>;
-	int *egzaminas = new int;
-	double galBalasVid, galBalasMed;
-
 	int choice = 0;
 	MainMenu(choice);
 
 	switch (choice) {
 	case 1: {
+    std::vector<int> *ivertinimai = new std::vector<int>;
+    int *egzaminas = new int;
+    double galBalasVid, galBalasMed;
 		std::string vardas, pavarde;
 		InitialInfo(vardas, pavarde);
 		input_by_hand(ivertinimai, egzaminas);
@@ -27,6 +24,9 @@ int main() {
 		break;
 	}
 	case 2: {
+    std::vector<int> *ivertinimai = new std::vector<int>;
+    int *egzaminas = new int;
+    double galBalasVid, galBalasMed;
 		std::string vardas, pavarde;
 		InitialInfo(vardas, pavarde);
 		generate_values(ivertinimai, egzaminas);
@@ -43,8 +43,21 @@ int main() {
 		write_data(studentai);
 		break;
 	}
+  case 4: {
+    std::vector<studentaiInfoTest> speedTest;
+    SpeedTest(speedTest, 10);
+    SpeedTest(speedTest, 100);
+    SpeedTest(speedTest, 1000);
+    SpeedTest(speedTest, 10000);
+    SpeedTest(speedTest, 100000);
+    break;
+  }
+  case 5: {
+    std::cout << "Bye bye!" << std::endl;
+    break;
+  }
 	default: {
-		std::cout << "Ivyko switch klaida" << std::endl;
+		std::cerr << "Ivyko switch klaida" << std::endl;
 	}
 	}
 }
