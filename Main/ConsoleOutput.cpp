@@ -57,7 +57,7 @@ void FileWrite(std::vector <studentaiInfoTest>& speedTest){
 		for(auto j:i.nDarbai){
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << i.pass << std::endl;
+		FileOut << i.egzaminas << " " << std::boolalpha << i.pass << std::endl;
 	}
 
 	FileOut.close();
