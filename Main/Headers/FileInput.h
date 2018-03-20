@@ -10,8 +10,11 @@ struct studentaiInfo {
 	double median;
 };
 
-void read_data(std::vector<studentaiInfo>& studentai); //reads the data from file into a vector of structures
-void write_data(std::vector<studentaiInfo> studentai); // calculates and outputs the final result from a vector of 'studentaiInfo'
-bool compareNames(const studentaiInfo& a, const studentaiInfo& b); // comparison function that allows us to sort vector of 'studentaiInfo' by 'vardas'
+void read_data(std::vector<studentaiInfo>& );
+void read_data_test(std::vector<studentaiInfo>& ); 
+void read_data_test(std::list<studentaiInfo>& );
+void read_data_test(std::deque<studentaiInfo>& );
+void write_data(std::vector<studentaiInfo> ); 
+bool compareNames(const studentaiInfo&, const studentaiInfo&); 
 
 #endif

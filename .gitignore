@@ -44,3 +44,6 @@ CTestTestfile.cmake
 
 # Generated Files
 Test.txt
+TestOutputV.txt
+TestOutputL.txt
+TestOutputD.txt

@@ -10,7 +10,6 @@ struct studentaiInfoTest {
 };
 
 void generate_values(std::vector<int> *ivertinimai, int *egzaminas);  // function that generates a selected number of values pseudorandomly;
-void generate_speed_test(std::vector <studentaiInfoTest>& speedTest, int amount);
-bool comparePass(const studentaiInfoTest& a, const studentaiInfoTest& b);
+void generate_speed_test_file(int);
 
 #endif

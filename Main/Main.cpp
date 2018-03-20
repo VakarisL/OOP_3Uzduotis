@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
+#include <deque>
 
 #include "../Main/Headers/FileInput.h"
 #include "../Main/Headers/ConsoleInput.h"
@@ -44,12 +46,11 @@ int main() {
 		break;
 	}
   case 4: {
-    std::vector<studentaiInfoTest> speedTest;
-    SpeedTest(speedTest, 10);
-    SpeedTest(speedTest, 100);
-    SpeedTest(speedTest, 1000);
-    SpeedTest(speedTest, 10000);
-    SpeedTest(speedTest, 100000);
+    SpeedTest(10);
+    SpeedTest(100);
+    SpeedTest(1000);
+    SpeedTest(10000);
+    SpeedTest(100000);
     break;
   }
   case 5: {
