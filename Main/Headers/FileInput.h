@@ -1,14 +1,10 @@
 #ifndef FILEINPUT_H_
 #define	FILEINPUT_H_
 
-struct studentaiInfo {
-	std::string vardas;
-	std::string pavarde;
-	std::vector<int> nDarbai;
-	int egzaminas;
-	double average;
-	double median;
-};
+#include "../Headers/studentaiInfo.h"
+#include <vector>
+#include <list>
+#include <deque>
 
 void read_data(std::vector<studentaiInfo>& );
 void read_data_test(std::vector<studentaiInfo>& ); 

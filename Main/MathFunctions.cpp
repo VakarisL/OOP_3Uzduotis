@@ -5,11 +5,11 @@
 
 #include "../Main/Headers/MathFunctions.h"
 
-double darbuVidurkis(std::vector<int> *ivertinimai) {
-	return ((double) std::accumulate(ivertinimai->begin(), ivertinimai->end(), 0.0) / ivertinimai->size());
+double darbuVidurkis(std::vector<int>& ivertinimai) {
+	return ((double) std::accumulate(ivertinimai.begin(), ivertinimai.end(), 0.0) / ivertinimai.size());
 }
 
-double darbuMediana(std::vector<int> ivertinimai) {
+double darbuMediana(std::vector<int>& ivertinimai) {
 	std::vector<int> *tempVector = new std::vector<int>;
 	*tempVector = ivertinimai;
 	std::sort(tempVector->begin(), tempVector->end());
