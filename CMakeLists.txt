@@ -10,17 +10,19 @@ add_executable(
 	Main/InfoFromConsole.cpp
 	Main/InfoFromRNG.cpp
 	Main/InfoFromFile.cpp
-	Main/FileInput.cpp
-	Main/RandomInput.cpp
+	Main/Tests.cpp
+	Main/TestFileRead.cpp
+	Main/GenerateTestFile.cpp
 	Main/MathFunctions.cpp
-	Main/ConsoleOutput.cpp
+	Main/TestFileWrite.cpp
 	Main/Headers/StudentaiInfo.h
 	Main/Headers/Menu.h
 	Main/Headers/InfoFromConsole.h
 	Main/Headers/InfoFromRNG.h
 	Main/Headers/InfoFromFile.h
-	Main/Headers/FileInput.h
-	Main/Headers/RandomInput.h
+	Main/Headers/Tests.h
+	Main/Headers/TestFileRead.h
+	Main/Headers/GenerateTestFile.h
 	Main/Headers/MathFunctions.h
-	Main/Headers/ConsoleOutput.h
+	Main/Headers/TestFileWrite.h
 )

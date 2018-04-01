@@ -1,19 +1,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <list>
-#include <deque>
 
 #include "../Main/Headers/Menu.h"
 #include "../Main/Headers/InfoFromConsole.h"
 #include "../Main/Headers/studentaiInfo.h"
 #include "../Main/Headers/InfoFromRNG.h"
 #include "../Main/Headers/InfoFromFile.h"
-
-#include "../Main/Headers/FileInput.h"
-#include "../Main/Headers/RandomInput.h"
-#include "../Main/Headers/MathFunctions.h"
-#include "../Main/Headers/ConsoleOutput.h"
+#include "../Main/Headers/Tests.h"
 
 int main() {
 	int choice = 0;
@@ -21,7 +15,7 @@ int main() {
 
 	switch (choice) {
 	case 1: {
-    	studentaiInfo studentai;
+		studentaiInfo studentai;
 		InitialInfo(studentai.vardas, studentai.pavarde);
 		input_by_hand(studentai.nDarbai, studentai.egzaminas);
 		output(studentai);
@@ -40,18 +34,18 @@ int main() {
 		output(studentai);
 		break;
 	}
-  case 4: {
-    SpeedTest(10);
-    SpeedTest(100);
-    SpeedTest(1000);
-    SpeedTest(10000);
-    SpeedTest(100000);
-    break;
-  }
-  case 5: {
-    std::cout << "Bye bye!" << std::endl;
-    break;
-  }
+	case 4: {
+		SpeedTest(10);
+		SpeedTest(100);
+		SpeedTest(1000);
+		SpeedTest(10000);
+		SpeedTest(100000);
+		break;
+	}
+	case 5: {
+		std::cout << "Bye bye!" << std::endl;
+		break;
+	}
 	default: {
 		std::cerr << "Ivyko switch klaida" << std::endl;
 	}
