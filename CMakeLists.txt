@@ -9,6 +9,7 @@ add_executable(
 	Main/Menu.cpp
 	Main/InfoFromConsole.cpp
 	Main/InfoFromRNG.cpp
+	Main/InfoFromFile.cpp
 	Main/FileInput.cpp
 	Main/RandomInput.cpp
 	Main/MathFunctions.cpp
@@ -17,6 +18,7 @@ add_executable(
 	Main/Headers/Menu.h
 	Main/Headers/InfoFromConsole.h
 	Main/Headers/InfoFromRNG.h
+	Main/Headers/InfoFromFile.h
 	Main/Headers/FileInput.h
 	Main/Headers/RandomInput.h
 	Main/Headers/MathFunctions.h

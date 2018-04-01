@@ -8,6 +8,7 @@
 #include "../Main/Headers/InfoFromConsole.h"
 #include "../Main/Headers/studentaiInfo.h"
 #include "../Main/Headers/InfoFromRNG.h"
+#include "../Main/Headers/InfoFromFile.h"
 
 #include "../Main/Headers/FileInput.h"
 #include "../Main/Headers/RandomInput.h"
@@ -34,13 +35,9 @@ int main() {
 		break;
 	}
 	case 3: {
-		// std::vector<studentaiInfo> studentai;
-		// read_data(studentai);
-		// for (size_t i = 0; i < studentai.size(); i++) {
-		// 	studentai[i].average = darbuVidurkis(&studentai[i].nDarbai);
-		// 	studentai[i].median = darbuMediana(studentai[i].nDarbai);
-		// }
-		// write_data(studentai);
+		std::vector<studentaiInfo> studentai;
+		read_data(studentai);
+		output(studentai);
 		break;
 	}
   case 4: {

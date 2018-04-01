@@ -2,6 +2,7 @@
 #include <string>
 #include <limits>
 #include <iomanip>
+#include <algorithm>
 
 #include "../Main/Headers/Menu.h"
 #include "../Main/Headers/FileInput.h"
@@ -44,3 +45,16 @@ void output(studentaiInfo& studentas) {
 	std::cout << "Galutinis balas (naudojant vidurki): " << std::setprecision(2) << std::fixed << studentas.average << std::endl;
 	std::cout << "Galutinis balas (naudojant mediana): " << std::setprecision(2) << std::fixed << studentas.median << std::endl;
 }
+
+void output(std::vector<studentaiInfo>& studentai) {
+	std::sort(studentai.begin(), studentai.end(), compareNames);
+	std::cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) <<
+	          "Galutinis-Vidurkis" << std::setw(20) << "Galutinis-Mediana" << std::endl;
+	for (size_t i = 0; i < studentai.size(); i++) {
+		std::cout << std::left << std::setw(20) << studentai[i].pavarde << std::setw(20) << studentai[i].vardas <<
+		          std::setprecision(2) << std::fixed << std::setw(20) << 0.4 * studentai[i].average + studentai[i].egzaminas * 0.6 <<
+		          std::setw(20) << 0.4 * studentai[i].median + studentai[i].egzaminas * 0.6 << std::endl;
+	}
+}
+
+bool compareNames(const studentaiInfo& a, const studentaiInfo& b) {return a.vardas < b.vardas;}
