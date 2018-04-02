@@ -113,5 +113,7 @@ Programa užsidaro
 
 ## Spartos lentelių apžvalga:
 Matome, kad neoptimizavus trynimo metodo vector ir deque konteineriai labai stipriai sulėtėja, naudojant didelius duomenų failus. List konteineriui trynimo metodas nekenkia, nes jame nereikia aktyviai perskirstyti atminties vietos.
+
 Tačiau optimizavus Vector ir Deque konteinerius naudojant remove_copy_if ir remove_if algoritmus, jų veiklos laikas stipriai nukrenta ir yra beveik palyginamas su List konteinerio veikimo laiku.
+
 Visų trijų metodų darbo laikas (po optimizacijos) yra panašus, tačiau trynimo metodas (po optimizacijos) gali būti pranašesnis, jeigu norime naudoti mažiau kompiuterio operatyviosios atminties.
