@@ -11,7 +11,7 @@ void read_data(std::vector<studentaiInfo>& studentai) {
 
 	try {
 		input.open("Main/Resources/Kursiokai.txt");
-		if(input.fail()) throw "Failas nerastas folderyje";
+		if (input.fail()) throw "Failas nerastas folderyje";
 	} catch (const char* e) {
 		std::cerr << e << std::endl;
 		std::exit(EXIT_SUCCESS);
