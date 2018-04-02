@@ -36,6 +36,7 @@ void output(studentaiInfo& studentas) {
 	studentas.average = 0.4 * darbuVidurkis(studentas.nDarbai) + studentas.egzaminas * 0.6;
 	studentas.median = 0.4 * darbuMediana(studentas.nDarbai) + studentas.egzaminas * 0.6;
 
+	std::cout << std::endl;
 	std::cout << "Studento info:" << std::endl;
 	std::cout << studentas.vardas << " " << studentas.pavarde << std::endl;
 	int counter = 0;
@@ -49,6 +50,7 @@ void output(studentaiInfo& studentas) {
 
 void output(std::vector<studentaiInfo>& studentai) {
 	std::sort(studentai.begin(), studentai.end(), compareNames);
+	std::cout << std::endl;
 	std::cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) <<
 	          "Galutinis-Vidurkis" << std::setw(20) << "Galutinis-Mediana" << std::endl;
 	for (size_t i = 0; i < studentai.size(); i++) {
