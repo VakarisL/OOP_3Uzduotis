@@ -26,11 +26,16 @@ void read_data(std::vector<studentaiInfo>& studentai) {
 		input >> tempString;
 		studentas.pavarde.append(tempString);
 		for (size_t i = 0; i < 5; i++) {
-			input >> tempPazymys;
-			studentas.nDarbai.push_back(tempPazymys);
+			if (!(input >> tempPazymys)) {
+				std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
+				std::exit(EXIT_SUCCESS);
+			} else {studentas.nDarbai.push_back(tempPazymys);}
+
 		}
-		input >> tempPazymys;
-		studentas.egzaminas = tempPazymys;
+		if (!(input >> tempPazymys)) {
+			std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
+			std::exit(EXIT_SUCCESS);
+		} else {studentas.egzaminas = tempPazymys;}
 		studentas.average = darbuVidurkis(studentas.nDarbai);
 		studentas.median = darbuMediana(studentas.nDarbai);
 		studentai.push_back(studentas);

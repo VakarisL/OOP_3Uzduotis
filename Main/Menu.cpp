@@ -22,12 +22,14 @@ void MainMenu(int& choice) {
 		std::cout << "2- Generuoti atsitiktinius pazymius;" << std::endl;
 		std::cout << "3- Skaityti pazymius is failo;" << std::endl;
 		std::cout << "4- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika;" << std::endl;
-		std::cout << "5- Iseiti..." << std::endl;
+		std::cout << "5- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant du papildomus konteinerius;" << std::endl;
+		std::cout << "6- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant viena papildoma konteineri;" << std::endl;
+		std::cout << "7- Iseiti..." << std::endl;
 		if (!(std::cin >> choice)) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		};
-	} while (choice < 1 || choice > 5 );
+	} while (choice < 1 || choice > 7 );
 }
 
 void output(studentaiInfo& studentas) {
