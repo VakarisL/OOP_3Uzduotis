@@ -66,5 +66,7 @@ int main() {
 		std::cerr << "Ivyko switch klaida" << std::endl;
 	}
 	}
+
+	return 0;
 }
 

@@ -17,5 +17,7 @@ void testTwoContainers(std::deque <studentaiInfo>&);
 void testSingleContainer(std::vector <studentaiInfo>&);
 void testSingleContainer(std::list <studentaiInfo>&);
 void testSingleContainer(std::deque <studentaiInfo>&);
+bool Check_if_Pass(studentaiInfo&);
+bool Check_if_Fail(studentaiInfo&);
 
 #endif

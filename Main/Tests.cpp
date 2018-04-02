@@ -181,16 +181,19 @@ void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::vector<studentaiInfo> vargsai;
 
-	std::vector<studentaiInfo>::size_type i = 0;
-	while (i != speedTestPass.size()) {
-		if (0.4 * speedTestPass[i].average + 0.6 * speedTestPass[i].egzaminas < 6) {
-			vargsai.push_back(speedTestPass[i]);
-			speedTestPass.erase(speedTestPass.begin() + i);
-		} else i++;
-	}
+	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
+	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
+
 	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
 	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
 	FileWriteUC(speedTestPass, vargsai);
+}
+
+bool Check_if_Fail(studentaiInfo& a){
+	return !Check_if_Pass(a);
+}
+bool Check_if_Pass(studentaiInfo& a){
+	return bool ((0.4 * (a.average) + 0.6 * (a.egzaminas)) >= 6);
 }
 
 void testSingleContainer(std::list <studentaiInfo>& speedTestPass) {
@@ -212,13 +215,9 @@ void testSingleContainer(std::deque <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::deque<studentaiInfo> vargsai;
 
-	std::deque<studentaiInfo>::size_type i = 0;
-	while (i != speedTestPass.size()) {
-		if (0.4 * speedTestPass[i].average + 0.6 * speedTestPass[i].egzaminas < 6) {
-			vargsai.push_back(speedTestPass[i]);
-			speedTestPass.erase(speedTestPass.begin() + i);
-		} else i++;
-	}
+	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
+	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
+	
 	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
 	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
 	FileWriteUC(speedTestPass, vargsai);
