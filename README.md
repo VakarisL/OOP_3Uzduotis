@@ -15,7 +15,7 @@
 - `./main`
 
 
-## Programos valdymo menu:
+## Programos valdymo meniu:
 ```
 Ar norite:
 1- Irasyti pazymius ranka;
