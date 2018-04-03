@@ -2,7 +2,7 @@
 
 
 ## Naudojimo instrukcija:
-### - Windows (naudojant cmd.exe; tik jeigu instaliuoti Cmake įrankiai ir GCC kompiliatorius):
+### - Windows (naudojant git bash; tik jeigu instaliuoti Cmake įrankiai ir GCC kompiliatorius):
 - `git clone https://github.com/VakarisL/OOP_2DuomenuApdorojimas.git`
 - `cd OOP_2DuomenuApdorojimas`
 - `cmake . -G "MinGW Makefiles"`
@@ -48,6 +48,7 @@ Veikimo principas:
 - Programa surūšiuoja visą konteinerį pagal surinktus galutinius pažymius
 - Programa į naują failą surašo įrašus pažymių mažėjimo eile
 - prie kiekvieno įrašo prirašoma pass/fail, priklausomai nuo to ar pažymiai mažesni už 6
+- Sukuria failus TestOutputV.txt, TestOutputL.txt, TestOutputD.txt, kuriuose pateikiami galutiniai įrašai
 
 ### 5- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant du papildomus konteinerius; (v1.0)
 Generuoja test.txt failą su n įrašų ir matuoja programos veikimo laiką naudojant `vector`, `list` ir `deque` konteinerius
@@ -57,6 +58,7 @@ Veikimo principas:
 - Programa surūšiuoja abu naujus konteinerius pagal surinktus galutinius pažymius
 - Programa į naują failą surašo įrašus pažymių mažėjimo eile
 - prie kiekvieno įrašo prirašoma pass/fail, priklausomai nuo to ar pažymiai mažesni už 6
+- Sukuria failus TestOutputV.txt, TestOutputL.txt, TestOutputD.txt, kuriuose pateikiami galutiniai įrašai
 
 ### 6- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant viena papildoma konteineri; v(1.0)
 Generuoja test.txt failą su n įrašų ir matuoja programos veikimo laiką naudojant `vector`, `list` ir `deque` konteinerius
@@ -67,6 +69,7 @@ Veikimo principas:
 - Programa surūšiuoja abu naujus konteinerius pagal surinktus galutinius pažymius
 - Programa į naują failą surašo įrašus pažymių mažėjimo eile
 - prie kiekvieno įrašo prirašoma pass/fail, priklausomai nuo to ar pažymiai mažesni už 6
+- Sukuria failus TestOutputV.txt, TestOutputL.txt, TestOutputD.txt, kuriuose pateikiami galutiniai įrašai
 
 ### 7- Iseiti...
 Programa užsidaro
