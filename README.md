@@ -1,5 +1,8 @@
 # OOP_2DuomenuApdorojimas - Vakario Liko antra objektinio programavimo pratybų užduotis
 
+# Vertinimas 
+
+- Viskas tvarkinga ir teisinga ir efektyvu!
 
 ## Naudojimo instrukcija:
 ### - Windows (naudojant git bash; tik jeigu instaliuoti Cmake įrankiai ir GCC kompiliatorius):
