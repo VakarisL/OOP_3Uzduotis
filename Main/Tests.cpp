@@ -129,14 +129,14 @@ void test(std::deque <studentaiInfo>& speedTestPass) {
 }
 
 bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b) {
-	return ((0.4 * a.average + 0.6 * a.egzaminas) > (0.4 * b.average + 0.6 * b.egzaminas));
+	return ((0.4 * a.average() + 0.6 * a.egzaminas()) > (0.4 * b.average() + 0.6 * b.egzaminas()));
 }
 
 void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::vector<studentaiInfo> kieti, vargsai;
 	for (auto i : speedTestPass) {
-		if (0.4 * i.average + 0.6 * i.egzaminas >= 6) {
+		if (i.galBalas() >= 6) {
 			kieti.push_back(i);
 		} else {
 			vargsai.push_back(i);
@@ -151,7 +151,7 @@ void testTwoContainers(std::list <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::list<studentaiInfo> kieti, vargsai;
 	for (auto i : speedTestPass) {
-		if (0.4 * i.average + 0.6 * i.egzaminas >= 6) {
+		if (i.galBalas() >= 6) {
 			kieti.push_back(i);
 		} else {
 			vargsai.push_back(i);
@@ -166,7 +166,7 @@ void testTwoContainers(std::deque <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::deque<studentaiInfo> kieti, vargsai;
 	for (auto i : speedTestPass) {
-		if (0.4 * i.average + 0.6 * i.egzaminas >= 6) {
+		if (i.galBalas() >= 6) {
 			kieti.push_back(i);
 		} else {
 			vargsai.push_back(i);
@@ -193,7 +193,7 @@ bool Check_if_Fail(studentaiInfo& a){
 	return !Check_if_Pass(a);
 }
 bool Check_if_Pass(studentaiInfo& a){
-	return bool ((0.4 * (a.average) + 0.6 * (a.egzaminas)) >= 6);
+	return bool (a.galBalas() >= 6);
 }
 
 void testSingleContainer(std::list <studentaiInfo>& speedTestPass) {
@@ -201,7 +201,7 @@ void testSingleContainer(std::list <studentaiInfo>& speedTestPass) {
 	std::list<studentaiInfo> vargsai;
 
 	for(auto it = speedTestPass.begin(); it!= speedTestPass.end();) {
-		if (0.4 * (it->average) + 0.6 * (it->egzaminas) < 6) {
+		if (it->galBalas() < 6) {
 			vargsai.push_back(*it);
 			it = speedTestPass.erase(it);
 		} else it++;

@@ -24,17 +24,15 @@ void read_data_test(std::vector<studentaiInfo>& studentai) {
 	while (input >> tempString) {
 		studentaiInfo studentas;
 
-		studentas.vardas.append(tempString);
+		studentas.setVardas(tempString);
 		input >> tempString;
-		studentas.pavarde.append(tempString);
+		studentas.setPavarde(tempString);
 		for (size_t i = 0; i < 5; i++) {
 			input >> tempPazymys;
-			studentas.nDarbai.push_back(tempPazymys);
+			studentas.setDarbai(tempPazymys);
 		}
 		input >> tempPazymys;
-		studentas.egzaminas = tempPazymys;
-		studentas.average = darbuVidurkis(studentas.nDarbai);
-		studentas.median = darbuMediana(studentas.nDarbai);
+		studentas.setEgzaminas(tempPazymys);
 		studentai.push_back(studentas);
 	}
 	input.close();
@@ -56,17 +54,15 @@ void read_data_test(std::list<studentaiInfo>& studentai) {
 	while (input >> tempString) {
 		studentaiInfo studentas;
 
-		studentas.vardas.append(tempString);
+		studentas.setVardas(tempString);
 		input >> tempString;
-		studentas.pavarde.append(tempString);
+		studentas.setPavarde(tempString);
 		for (size_t i = 0; i < 5; i++) {
 			input >> tempPazymys;
-			studentas.nDarbai.push_back(tempPazymys);
+			studentas.setDarbai(tempPazymys);
 		}
 		input >> tempPazymys;
-		studentas.egzaminas = tempPazymys;
-		studentas.average = darbuVidurkis(studentas.nDarbai);
-		studentas.median = darbuMediana(studentas.nDarbai);
+		studentas.setEgzaminas(tempPazymys);
 		studentai.push_back(studentas);
 	}
 	input.close();
@@ -88,17 +84,15 @@ void read_data_test(std::deque<studentaiInfo>& studentai) {
 	while (input >> tempString) {
 		studentaiInfo studentas;
 
-		studentas.vardas.append(tempString);
+		studentas.setVardas(tempString);
 		input >> tempString;
-		studentas.pavarde.append(tempString);
+		studentas.setPavarde(tempString);
 		for (size_t i = 0; i < 5; i++) {
 			input >> tempPazymys;
-			studentas.nDarbai.push_back(tempPazymys);
+			studentas.setDarbai(tempPazymys);
 		}
 		input >> tempPazymys;
-		studentas.egzaminas = tempPazymys;
-		studentas.average = darbuVidurkis(studentas.nDarbai);
-		studentas.median = darbuMediana(studentas.nDarbai);
+		studentas.setEgzaminas(tempPazymys);
 		studentai.push_back(studentas);
 	}
 	input.close();

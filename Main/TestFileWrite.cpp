@@ -18,12 +18,12 @@ void FileWrite(std::vector <studentaiInfo>& speedTestPass) {
 	}
 
 	for (auto i : speedTestPass) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
-		0.4*i.average+0.6*i.egzaminas >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
+		i.galBalas() >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
 	}
 
 	FileOut.close();
@@ -41,12 +41,12 @@ void FileWrite(std::list <studentaiInfo>& speedTestPass) {
 	}
 
 	for (auto i : speedTestPass) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
-		0.4*i.average+0.6*i.egzaminas >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
+		i.galBalas() >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
 	}
 
 	FileOut.close();
@@ -64,12 +64,12 @@ void FileWrite(std::deque <studentaiInfo>& speedTestPass) {
 	}
 
 	for (auto i : speedTestPass) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
-		0.4*i.average+0.6*i.egzaminas >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
+		i.galBalas() >= 6 ? FileOut << " Pass" << std::endl : FileOut << " Fail" << std::endl;
 	}
 
 	FileOut.close();
@@ -87,20 +87,20 @@ void FileWriteUC(std::vector <studentaiInfo>& kieti, std::vector <studentaiInfo>
 	}
 
 	for (auto i : kieti) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Pass" << std::endl;
 	}
 
 	for (auto i : vargsai) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Fail" << std::endl;
 	}
 
@@ -118,20 +118,20 @@ void FileWriteUC(std::list <studentaiInfo>& kieti, std::list <studentaiInfo>& va
 	}
 
 	for (auto i : kieti) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Pass" << std::endl;
 	}
 
 	for (auto i : vargsai) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Fail" << std::endl;
 	}
 
@@ -149,20 +149,20 @@ void FileWriteUC(std::deque <studentaiInfo>& kieti, std::deque <studentaiInfo>& 
 	}
 
 	for (auto i : kieti) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Pass" << std::endl;
 	}
 
 	for (auto i : vargsai) {
-		FileOut << i.vardas << " " << i.pavarde << " ";
-		for (auto j : i.nDarbai) {
+		FileOut << i.vardas() << " " << i.pavarde() << " ";
+		for (auto j : i.pazymiai()) {
 			FileOut << j << " ";
 		}
-		FileOut << i.egzaminas << " " << "Pazymys: " << 0.4*i.average+0.6*i.egzaminas;
+		FileOut << i.egzaminas() << " " << "Pazymys: " << i.galBalas();
 		FileOut << " Fail" << std::endl;
 	}
 

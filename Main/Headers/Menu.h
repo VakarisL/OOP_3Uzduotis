@@ -3,9 +3,9 @@
 
 #include "../Headers/studentaiInfo.h"
 
-void InitialInfo(std::string&, std::string&);
+//void InitialInfo(std::string&, std::string&);
 void MainMenu(int&);
-void output(studentaiInfo&);
+//void output(studentaiInfo&);
 void output(std::vector<studentaiInfo>&);
 bool compareNames(const studentaiInfo&, const studentaiInfo&);
 
