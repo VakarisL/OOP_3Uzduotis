@@ -10,6 +10,8 @@
 #include "../Main/Headers/TestFileWrite.h"
 #include "../Main/Headers/GenerateTestFile.h"
 
+#include "../Main/Headers/MathFunctions.h"
+
 void SpeedTest(int amount, int method) {
 	// method -> which implementation of tests are going to be run
 	std::chrono::high_resolution_clock::time_point timeStart, timeEnd;
@@ -128,8 +130,8 @@ void test(std::deque <studentaiInfo>& speedTestPass) {
 	FileWrite(speedTestPass);
 }
 
-bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b) {
-	return ((0.4 * a.average() + 0.6 * a.egzaminas()) > (0.4 * b.average() + 0.6 * b.egzaminas()));
+bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b){
+	return (a.galBalas() > b.galBalas());
 }
 
 void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
@@ -177,20 +179,25 @@ void testTwoContainers(std::deque <studentaiInfo>& speedTestPass) {
 	FileWriteUC(kieti, vargsai);
 }
 
-void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) {
+void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) { //DEBUG THIS
+	std::cout << "boop!1" <<std::endl;
 	read_data_test(speedTestPass);
+std::cout << "boop!2" <<std::endl;
 	std::vector<studentaiInfo> vargsai;
 
 	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
 	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
+std::cout << "boop!3" <<std::endl;
 
 	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
-	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
+	// std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
+std::cout << "boop!4" <<std::endl;
 	FileWriteUC(speedTestPass, vargsai);
+std::cout << "boop!5" <<std::endl;
 }
 
 bool Check_if_Fail(studentaiInfo& a){
-	return !Check_if_Pass(a);
+	return !Check_if_Pass( a);
 }
 bool Check_if_Pass(studentaiInfo& a){
 	return bool (a.galBalas() >= 6);
@@ -218,7 +225,7 @@ void testSingleContainer(std::deque <studentaiInfo>& speedTestPass) {
 	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
 	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
 	
-	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
-	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
+	// std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
+	// std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
 	FileWriteUC(speedTestPass, vargsai);
 }

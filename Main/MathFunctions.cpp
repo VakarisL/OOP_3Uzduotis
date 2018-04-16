@@ -5,7 +5,7 @@
 
 #include "../Main/Headers/MathFunctions.h"
 
-double darbuVidurkis(std::vector<int> ivertinimai) {
+double darbuVidurkis(const std::vector<int>& ivertinimai) {
 	if (ivertinimai.size() == 0) return 0;
 	return ((double) std::accumulate(ivertinimai.begin(), ivertinimai.end(), 0.0) / ivertinimai.size());
 }

@@ -21,7 +21,7 @@ class studentaiInfo {
 	int egzaminas() const {return Egzaminas;}
 	double average() const;
 	double median() const;
-	double galBalas(double (*)(std::vector<int>) = darbuVidurkis) const;
+	double galBalas(double (*)(const std::vector<int>&) = darbuVidurkis) const;
 	void setVardas(std::string& name) {Vardas = name;}
 	void setPavarde(std:: string& surname) {Pavarde = surname;}
 	void setEgzaminas(int exam) {Egzaminas = exam;}

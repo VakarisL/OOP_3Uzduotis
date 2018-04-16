@@ -13,6 +13,6 @@ double studentaiInfo::median() const{
 	return ::darbuMediana(nDarbai);
 }
 
-double studentaiInfo::galBalas(double (*mathFunc)(std::vector<int>)) const{
+double studentaiInfo::galBalas(double (*mathFunc)(const std::vector<int>&)) const{
 	return (0.4 * mathFunc(nDarbai) + Egzaminas * 0.6);
 }
