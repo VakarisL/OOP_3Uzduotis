@@ -27,11 +27,11 @@ Ar norite:
 ```
 
 
-### 1- Skaityti pazymius is failo; (v0.2/v0.3)
+### 1- Skaityti pazymius is failo;
 Nuskaito informaciją iš pateikto failo `Kursiokai.txt` ir pateikia surušiuotą lentelę su galutiniais pažymiais
 - (formatas: Pavarde Vardas Pažymys Pažymys Pažymys Pažymys Pažymys Egzaminas)
 
-### 2- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika; (v0.4/v0.5)
+### 2- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika;
 Generuoja test.txt failą su n įrašų ir matuoja programos veikimo laiką naudojant `vector` konteinerį
 Veikimo principas:
 - Nuskaitomas failas į operatyviąją atmintį
@@ -40,7 +40,7 @@ Veikimo principas:
 - prie kiekvieno įrašo prirašoma pass/fail, priklausomai nuo to ar pažymiai mažesni už 6
 - Sukuria failus TestOutputV.txt kuriuose pateikiami galutiniai įrašai
 
-### 3- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant du papildomus konteinerius; (v1.0)
+### 3- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant du papildomus konteinerius;
 Generuoja test.txt failą su n įrašų ir matuoja programos veikimo laiką naudojant `vector` konteinerį
 Veikimo principas:
 - Nuskaitomas failas į operatyviąją atmintį
@@ -50,7 +50,7 @@ Veikimo principas:
 - prie kiekvieno įrašo prirašoma pass/fail, priklausomai nuo to ar pažymiai mažesni už 6
 - Sukuria failus TestOutputV.txt kuriuose pateikiami galutiniai įrašai
 
-### 4- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant viena papildoma konteineri; v(1.0)
+### 4- Generuoti 10/100/.../100000 irasu ir matuoti veikimo laika naudojant viena papildoma konteineri;
 Generuoja test.txt failą su n įrašų ir matuoja programos veikimo laiką naudojant `vector`konteinerį
 Veikimo principas:
 - Nuskaitomas failas į operatyviąją atmintį
@@ -63,3 +63,33 @@ Veikimo principas:
 
 ### 5- Iseiti...
 Programa užsidaro
+
+## Spartos palyginimų lentelės (tarp struct ir class, naudojant vector konteinerį):
+### 2 metodu
+| Generuotų įrašų kiekis | Struct (-O3) | Class (-O3) | Class(-O2) | Class(-O1)
+| :-------------: |:-------------:| :-----:|  :-----:|  :-----:
+| 10      | 0.06498s | 0.006118s |  0.016001s|  0.0s
+| 100      | 0.00702s | 0.005014s | 0.004027s|  0.01563s
+| 1000 | 0.02306s | 0.015628s | 0.015627s|  0.031269s
+| 10000 | 0.154425s | 0.141073s | 0.156437s|  0.226344s
+| 100000 | 1.56439s  | 1.69389s | 1.81119s|  1.69688s
+
+
+### 3 metodu, naudojant/išskirstant į du papildomus konteinerius
+| Generuotų įrašų kiekis | Struct (-O3) | Class (-O3) | Class(-O2) | Class(-O1)
+| :-------------: |:-------------:| :-----:|  :-----:|  :-----:
+| 10      | 0.005514s | 0.0015595s |  0.015566s|  0.0s
+| 100      | 0.008021s | 0.031279s | 0.0s|  0.0s
+| 1000 | 0.030104s | 0.031279s | 0.046922s|  0.015628s
+| 10000 | 0.151402s | 0.171868s | 0.187525s|  0.156266s
+| 100000 | 1.59442s  | 1.59019s | 2.04596s|  1.74326s
+
+
+### 4 metodu, naudojant vieną papildomą konteinerį, trinant įrašus iš orginalaus konteinerio
+| Generuotų įrašų kiekis | Struct (-O3) | Class (-O3) | Class(-O2) | Class(-O1)
+| :-------------: |:-------------:| :-----:|  :-----:|  :-----:
+| 10      | 0.005504s |0.0115685s |  0.015563s|  0.015566s|  0.0s
+| 100      | 0.0059915s | 0.004029s | 0.0s|  0.015589s
+| 1000 | 0.027073s | 0.019705s | 0.031253s|  0.031281s
+| 10000 | 0.153408s | 0.137174s | 0.171922s|  0.175059s
+| 100000 | 1.58353s  | 1.64346s | 1.56424s|  1.56335s
