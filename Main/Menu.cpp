@@ -5,7 +5,6 @@
 #include <algorithm>
 
 #include "../Main/Headers/Menu.h"
-#include "../Main/Headers/MathFunctions.h"
 
 void MainMenu(int& choice) {
 	do {

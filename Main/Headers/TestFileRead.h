@@ -6,8 +6,6 @@
 #include <list>
 #include <deque>
 
-void read_data_test(std::vector<studentaiInfo>& );
-void read_data_test(std::list<studentaiInfo>& );
-void read_data_test(std::deque<studentaiInfo>& );
+void read_data_test(std::vector<studentaiInfo>&, int);
 
 #endif

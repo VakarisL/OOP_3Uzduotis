@@ -19,24 +19,9 @@ void read_data(std::vector<studentaiInfo>& studentai) {
 
 	int tempPazymys;
 	std::string tempString;
-	while (input >> tempString) {
-		studentaiInfo studentas;
-
-		studentas.setVardas(tempString);
-		input >> tempString;
-		studentas.setPavarde(tempString);
-		for (size_t i = 0; i < 5; i++) {
-			if (!(input >> tempPazymys)) {
-				std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
-				std::exit(EXIT_SUCCESS);
-			} else {studentas.setDarbai(tempPazymys);}
-
-		}
-		if (!(input >> tempPazymys)) {
-			std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
-			std::terminate();
-		} else {studentas.setEgzaminas(tempPazymys);}
-		studentai.push_back(studentas);
+	while (!input.eof()) {
+		studentaiInfo tempStudentas(input);
+		studentai.push_back(tempStudentas);
 	}
 	input.close();
 }

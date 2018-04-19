@@ -10,15 +10,13 @@
 #include "../Main/Headers/TestFileWrite.h"
 #include "../Main/Headers/GenerateTestFile.h"
 
-#include "../Main/Headers/MathFunctions.h"
-
-void SpeedTest(int amount, void (*method)(std::vector<studentaiInfo>&)) {
+void SpeedTest(int amount, void (*method)(std::vector<studentaiInfo>&, int)) {
 	std::chrono::high_resolution_clock::time_point timeStart, timeEnd;
 	std::chrono::duration<double, std::milli> timeTaken;
 	generate_speed_test_file(amount);
 	timeStart = std::chrono::high_resolution_clock::now();
 	std::vector<studentaiInfo> speedTestPassV;
-	method(speedTestPassV);
+	method(speedTestPassV, amount);
 	timeEnd = std::chrono::high_resolution_clock::now();
 	timeTaken = timeEnd - timeStart;
 	std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteinerius (sekundemis): "
@@ -26,8 +24,8 @@ void SpeedTest(int amount, void (*method)(std::vector<studentaiInfo>&)) {
 	speedTestPassV.clear();
 }
 
-void test(std::vector <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
+void test(std::vector <studentaiInfo>& speedTestPass, int amount) {
+	read_data_test(speedTestPass, amount);
 	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
 	FileWrite(speedTestPass);
 }
@@ -36,11 +34,11 @@ bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b) {
 	return (a.galBalas() > b.galBalas());
 }
 
-void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
+void testTwoContainers(std::vector <studentaiInfo>& speedTestPass, int amount) {
+	read_data_test(speedTestPass, amount);
 	std::vector<studentaiInfo> kieti, vargsai;
 	for (auto i : speedTestPass) {
-		if (i.galBalas() > 5.9999999999) {
+		if (i.galBalas() >= 6) {
 			kieti.push_back(i);
 		} else {
 			vargsai.push_back(i);
@@ -51,8 +49,8 @@ void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
 	FileWriteUC(kieti, vargsai);
 }
 
-void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
+void testSingleContainer(std::vector <studentaiInfo>& speedTestPass, int amount) {
+	read_data_test(speedTestPass, amount);
 	std::vector<studentaiInfo> vargsai;
 
 	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
@@ -67,5 +65,5 @@ bool Check_if_Fail(studentaiInfo& a) {
 	return !Check_if_Pass( a);
 }
 bool Check_if_Pass(studentaiInfo& a) {
-	return bool (a.galBalas() > 5.9999999);
+	return bool (a.galBalas() >= 6);
 }

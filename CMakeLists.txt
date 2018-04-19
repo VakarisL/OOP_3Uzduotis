@@ -8,7 +8,6 @@ add_executable(
 	Main/main.cpp
 	Main/Menu.cpp
 	Main/InfoFromFile.cpp
-	Main/MathFunctions.cpp
 	Main/StudentaiInfo.cpp
 	Main/Tests.cpp
 	Main/TestFileRead.cpp
@@ -17,7 +16,6 @@ add_executable(
 	Main/Headers/StudentaiInfo.h
 	Main/Headers/Menu.h
 	Main/Headers/InfoFromFile.h
-	Main/Headers/MathFunctions.h
 	Main/Headers/Tests.h
 	Main/Headers/TestFileRead.h
 	Main/Headers/TestFileWrite.h

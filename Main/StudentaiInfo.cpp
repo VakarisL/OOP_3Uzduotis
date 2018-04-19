@@ -1,18 +1,46 @@
 #include <iostream>
 #include <vector>
+#include <numeric>
+#include <algorithm>
 
 #include "../Main/Headers/StudentaiInfo.h"
-#include "../Main/Headers/MathFunctions.h"
 
-
-double studentaiInfo::average() const{
-	return ::darbuVidurkis(nDarbai);
+void studentaiInfo::readStudent(std:: istream& input) {
+	input >> Vardas;
+	input >> Pavarde;
+	int tempPazymys;
+	for (size_t i = 0; i < 5; i++) {
+		if (!(input >> tempPazymys)) {
+			std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
+			std::terminate();
+			
+		}
+		nDarbai.push_back(tempPazymys);
+	}
+	if (!(input >> Egzaminas)) {
+		std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
+		std::terminate();
+	}
 }
 
-double studentaiInfo::median() const{
-	return ::darbuMediana(nDarbai);
+void studentaiInfo::setVidurkis() {
+	if (nDarbai.size() == 0) Vidurkis = 0;
+	else Vidurkis = ((double) std::accumulate(nDarbai.begin(), nDarbai.end(), 0.0) / nDarbai.size());
 }
 
-double studentaiInfo::galBalas(double (*mathFunc)(const std::vector<int>&)) const{
-	return (0.4 * mathFunc(nDarbai) + Egzaminas * 0.6);
+void studentaiInfo::setMediana() {
+	std::vector<int> *tempVector = new std::vector<int>;
+	*tempVector = nDarbai;
+	if (tempVector->size() == 0) Mediana = 0;
+	std::sort(tempVector->begin(), tempVector->end());
+	if (tempVector->size() % 2 == 1) {
+		Mediana = tempVector->operator[]((tempVector->size() - 1) / 2);
+	} else {
+		Mediana =  ((double)tempVector->operator[]((tempVector->size() - 1) / 2) / 2 +
+		            (double)tempVector->operator[]((tempVector->size() - 1) / 2 + 1) / 2);
+	}
+}
+
+void studentaiInfo::setGalutinisBalas() {
+	Galutinis_Balas = (0.4 * Vidurkis + Egzaminas * 0.6);
 }
