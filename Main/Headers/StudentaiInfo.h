@@ -13,6 +13,9 @@ class studentaiInfo {
 	std::string Pavarde;
 	std::vector<int> nDarbai;
 	int Egzaminas;
+	// double Vidurkis;
+	// double Mediana;
+	// double Galutinis_Balas;
   public:
 	//studentaiInfo() : Egzaminas(0) { }
 	std::string vardas() const {return Vardas;}

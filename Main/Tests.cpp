@@ -12,104 +12,18 @@
 
 #include "../Main/Headers/MathFunctions.h"
 
-void SpeedTest(int amount, int method) {
-	// method -> which implementation of tests are going to be run
+void SpeedTest(int amount, void (*method)(std::vector<studentaiInfo>&)) {
 	std::chrono::high_resolution_clock::time_point timeStart, timeEnd;
 	std::chrono::duration<double, std::milli> timeTaken;
 	generate_speed_test_file(amount);
-
-	switch (method) {
-	case 1: {
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::vector<studentaiInfo> speedTestPassV;
-		test(speedTestPassV);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteineri (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassV.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::list<studentaiInfo> speedTestPassL;
-		test(speedTestPassL);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'list' konteineri (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassL.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::deque<studentaiInfo> speedTestPassD;
-		test(speedTestPassD);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'deque' konteineri (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassD.clear();
-		break;
-	}
-	case 2: {
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::vector<studentaiInfo> speedTestPassV;
-		testTwoContainers(speedTestPassV);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassV.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::list<studentaiInfo> speedTestPassL;
-		testTwoContainers(speedTestPassL);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'list' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassL.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::deque<studentaiInfo> speedTestPassD;
-		testTwoContainers(speedTestPassD);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'deque' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassD.clear();
-		break;
-	}
-	case 3: {
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::vector<studentaiInfo> speedTestPassV;
-		testSingleContainer(speedTestPassV);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassV.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::list<studentaiInfo> speedTestPassL;
-		testSingleContainer(speedTestPassL);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'list' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassL.clear();
-
-		timeStart = std::chrono::high_resolution_clock::now();
-		std::deque<studentaiInfo> speedTestPassD;
-		testSingleContainer(speedTestPassD);
-		timeEnd = std::chrono::high_resolution_clock::now();
-		timeTaken = timeEnd - timeStart;
-		std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'deque' konteinerius (sekundemis): "
-		          << (double)timeTaken.count() / 1000 << std::endl;
-		speedTestPassD.clear();
-		break;
-	}
-	default: {
-		std::cerr << "Ivyko switch klaida testavime" << std::endl;
-	}
-	}
+	timeStart = std::chrono::high_resolution_clock::now();
+	std::vector<studentaiInfo> speedTestPassV;
+	method(speedTestPassV);
+	timeEnd = std::chrono::high_resolution_clock::now();
+	timeTaken = timeEnd - timeStart;
+	std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteinerius (sekundemis): "
+	          << (double)timeTaken.count() / 1000 << std::endl;
+	speedTestPassV.clear();
 }
 
 void test(std::vector <studentaiInfo>& speedTestPass) {
@@ -118,19 +32,7 @@ void test(std::vector <studentaiInfo>& speedTestPass) {
 	FileWrite(speedTestPass);
 }
 
-void test(std::list <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
-	speedTestPass.sort(Compare_By_Result);
-	FileWrite(speedTestPass);
-}
-
-void test(std::deque <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
-	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
-	FileWrite(speedTestPass);
-}
-
-bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b){
+bool Compare_By_Result(const studentaiInfo &a, const studentaiInfo &b) {
 	return (a.galBalas() > b.galBalas());
 }
 
@@ -138,7 +40,7 @@ void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
 	std::vector<studentaiInfo> kieti, vargsai;
 	for (auto i : speedTestPass) {
-		if (i.galBalas() >= 6) {
+		if (i.galBalas() > 5.9999999999) {
 			kieti.push_back(i);
 		} else {
 			vargsai.push_back(i);
@@ -149,83 +51,21 @@ void testTwoContainers(std::vector <studentaiInfo>& speedTestPass) {
 	FileWriteUC(kieti, vargsai);
 }
 
-void testTwoContainers(std::list <studentaiInfo>& speedTestPass) {
+void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) {
 	read_data_test(speedTestPass);
-	std::list<studentaiInfo> kieti, vargsai;
-	for (auto i : speedTestPass) {
-		if (i.galBalas() >= 6) {
-			kieti.push_back(i);
-		} else {
-			vargsai.push_back(i);
-		}
-	}
-	kieti.sort(Compare_By_Result);
-	vargsai.sort(Compare_By_Result);
-	FileWriteUC(kieti, vargsai);
-}
-
-void testTwoContainers(std::deque <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
-	std::deque<studentaiInfo> kieti, vargsai;
-	for (auto i : speedTestPass) {
-		if (i.galBalas() >= 6) {
-			kieti.push_back(i);
-		} else {
-			vargsai.push_back(i);
-		}
-	}
-	std::sort(kieti.begin(), kieti.end(), Compare_By_Result);
-	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
-	FileWriteUC(kieti, vargsai);
-}
-
-void testSingleContainer(std::vector <studentaiInfo>& speedTestPass) { //DEBUG THIS
-	std::cout << "boop!1" <<std::endl;
-	read_data_test(speedTestPass);
-std::cout << "boop!2" <<std::endl;
 	std::vector<studentaiInfo> vargsai;
 
 	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
 	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
-std::cout << "boop!3" <<std::endl;
 
 	std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
-	// std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
-std::cout << "boop!4" <<std::endl;
+	std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
 	FileWriteUC(speedTestPass, vargsai);
-std::cout << "boop!5" <<std::endl;
 }
 
-bool Check_if_Fail(studentaiInfo& a){
+bool Check_if_Fail(studentaiInfo& a) {
 	return !Check_if_Pass( a);
 }
-bool Check_if_Pass(studentaiInfo& a){
-	return bool (a.galBalas() >= 6);
-}
-
-void testSingleContainer(std::list <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
-	std::list<studentaiInfo> vargsai;
-
-	for(auto it = speedTestPass.begin(); it!= speedTestPass.end();) {
-		if (it->galBalas() < 6) {
-			vargsai.push_back(*it);
-			it = speedTestPass.erase(it);
-		} else it++;
-	}
-	speedTestPass.sort(Compare_By_Result);
-	vargsai.sort(Compare_By_Result);
-	FileWriteUC(speedTestPass, vargsai);
-}
-
-void testSingleContainer(std::deque <studentaiInfo>& speedTestPass) {
-	read_data_test(speedTestPass);
-	std::deque<studentaiInfo> vargsai;
-
-	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
-	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
-	
-	// std::sort(speedTestPass.begin(), speedTestPass.end(), Compare_By_Result);
-	// std::sort(vargsai.begin(), vargsai.end(), Compare_By_Result);
-	FileWriteUC(speedTestPass, vargsai);
+bool Check_if_Pass(studentaiInfo& a) {
+	return bool (a.galBalas() > 5.9999999);
 }

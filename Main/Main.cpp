@@ -19,27 +19,27 @@ int main() {
 		break;
 	}
 	case 2: {
-		SpeedTest(10, 1);
-		SpeedTest(100, 1);
-		SpeedTest(1000, 1);
-		SpeedTest(10000, 1);
-		SpeedTest(100000, 1);
+		SpeedTest(10, test);
+		SpeedTest(100, test);
+		SpeedTest(1000, test);
+		SpeedTest(10000, test);
+		SpeedTest(100000, test);
 		break;
 	}
 	case 3: {
-		SpeedTest(10, 2);
-		SpeedTest(100, 2);
-		SpeedTest(1000, 2);
-		SpeedTest(10000, 2);
-		SpeedTest(100000, 2);
+		SpeedTest(10, testTwoContainers);
+		SpeedTest(100, testTwoContainers);
+		SpeedTest(1000, testTwoContainers);
+		SpeedTest(10000, testTwoContainers);
+		SpeedTest(100000, testTwoContainers);
 		break;
 	}
 	case 4: {
-		SpeedTest(10, 3);
-		SpeedTest(100, 3);
-		SpeedTest(1000, 3);
-		SpeedTest(10000, 3);
-		SpeedTest(100000, 3);
+		SpeedTest(10, testSingleContainer);
+		SpeedTest(100, testSingleContainer);
+		SpeedTest(1000, testSingleContainer);
+		SpeedTest(10000, testSingleContainer);
+		SpeedTest(100000, testSingleContainer);
 		break;
 	}
 	case 5: {
