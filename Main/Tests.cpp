@@ -1,8 +1,6 @@
 #include <iostream>
 #include <chrono>
 #include <vector>
-#include <list>
-#include <deque>
 #include <algorithm>
 
 #include "../Main/Headers/Tests.h"

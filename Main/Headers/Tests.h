@@ -2,8 +2,6 @@
 #define TESTS_H_
 
 #include <vector>
-#include <list>
-#include <deque>
 #include "../Headers/StudentaiInfo.h"
 
 void SpeedTest(int, void (*)(std::vector<studentaiInfo>&, int));

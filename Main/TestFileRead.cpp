@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <list>
-#include <deque>
 
 #include "../Main/Headers/TestFileRead.h"
 #include "../Main/Headers/StudentaiInfo.h"
