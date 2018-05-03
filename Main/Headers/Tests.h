@@ -6,7 +6,6 @@
 
 void SpeedTest(int, void (*)(std::vector<studentaiInfo>&, int));
 void test(std::vector <studentaiInfo>&, int);
-bool Compare_By_Result(const studentaiInfo&, const studentaiInfo&);
 void testTwoContainers(std::vector <studentaiInfo>&, int);
 void testSingleContainer(std::vector <studentaiInfo>&, int);
 bool Check_if_Pass(studentaiInfo&);

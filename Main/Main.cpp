@@ -6,7 +6,11 @@
 #include "../Main/Headers/studentaiInfo.h"
 #include "../Main/Headers/InfoFromFile.h"
 #include "../Main/Headers/Tests.h"
-
+/**
+ * @brief 	contains the control structure of the program
+ * @details displays the menu of choices for the user
+ * 			uses selective structure to execute the chosen functionality
+ */
 int main() {
 	int choice = 0;
 	MainMenu(choice);

@@ -6,6 +6,13 @@
 #include "../Main/Headers/InfoFromFile.h"
 #include "../Main/Headers/StudentaiInfo.h"
 
+/**
+ * @brief	reads data from Kursiokai.txt
+ * @details the data in file has to be of form [name] [surname] [grade] [grade] [grade] [grade] [grade] [exam grade]
+ * 
+ * @param studentai [vector of class objects to read data into]
+ */
+
 void read_data(std::vector<studentaiInfo>& studentai) {
 	std::ifstream input;
 

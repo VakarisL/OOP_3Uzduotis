@@ -5,6 +5,12 @@
 #include <vector>
 #include <fstream>
 
+/**
+ * @brief class to store the data about a student and his grades
+ * @details [long description]
+ * 
+ */
+
 class studentaiInfo {
   private:
 	std::string Vardas;
@@ -28,7 +34,14 @@ class studentaiInfo {
 	inline double average() const {return Vidurkis;}
 	inline double median() const {return Mediana;}
 	inline double galBalas() const {return Galutinis_Balas;}
+	friend std::ostream& operator<<(std::ostream&, const studentaiInfo&);
+	inline bool operator<(const studentaiInfo& a) const {return (galBalas() < a.galBalas());}
+	inline bool operator==(const studentaiInfo& a) const {return (galBalas() == a.galBalas());}
 };
 
+inline bool operator!=(const studentaiInfo& a, const studentaiInfo& b) {return !(a == b);}
+inline bool operator<=(const studentaiInfo& a, const studentaiInfo& b) {return (a < b) || (a == b);}
+inline bool operator>(const studentaiInfo& a, const studentaiInfo& b) {return !(a <= b);}
+inline bool operator>=(const studentaiInfo& a, const studentaiInfo& b) {return !(a < b);}
 
 #endif

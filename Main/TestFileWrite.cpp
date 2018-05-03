@@ -5,6 +5,15 @@
 #include "../Main/Headers/TestFileWrite.h"
 #include "../Main/Headers/StudentaiInfo.h"
 
+/**
+ * @brief both function output nicely formatted data from the corresponding vectors into .txt file
+ * @details [long description]
+ * 
+ * @param speedTestPass [vector of class objects to output data from]
+ * @param kieti [vector of class objects to output data from (final grade >=6)]
+ * @param vargsai [vector of class objects to output data from (final grade <6)]
+ */
+
 void FileWrite(std::vector <studentaiInfo>& speedTestPass) {
 	std::ofstream FileOut;
 	try {

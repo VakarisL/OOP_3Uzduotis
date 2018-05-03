@@ -5,6 +5,15 @@
 
 #include "../Main/Headers/StudentaiInfo.h"
 
+/**
+ * @brief constructor for the class obj
+ * @details takes the istream and tries to read values for the class object, if the file doesn't match the expected format
+ * 			([name] [surname] [grade] [grade] [grade] [grade] [grade] [exam grade])
+ * 			the program notifies the user and terminates.
+ * 
+ * @param input [input stream of file form which the data will be collected]
+ */
+
 void studentaiInfo::readStudent(std:: istream& input) {
 	input >> Vardas;
 	input >> Pavarde;
@@ -13,7 +22,7 @@ void studentaiInfo::readStudent(std:: istream& input) {
 		if (!(input >> tempPazymys)) {
 			std::cerr << "Pateiktas failas turi formatavimo klaida" << std::endl;
 			std::terminate();
-			
+
 		}
 		nDarbai.push_back(tempPazymys);
 	}
@@ -44,3 +53,11 @@ void studentaiInfo::setMediana() {
 void studentaiInfo::setGalutinisBalas() {
 	Galutinis_Balas = (0.4 * Vidurkis + Egzaminas * 0.6);
 }
+
+std::ostream& operator<<(std::ostream& out, const studentaiInfo& a) {
+	out << a.vardas() << " " << a.pavarde() << " -> Pazymiai: ";
+	for (auto i : a.pazymiai()) {out << i << " ";}
+	out << "Egzaminas: " << a.egzaminas() << " Galutinis Balas: " << a.galBalas() << "\n";
+	return out;
+}
+

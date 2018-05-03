@@ -5,6 +5,13 @@
 
 #include "../Main/Headers/GenerateTestFile.h"
 
+/**
+ * @brief 	Generates a Test.txt file and fills it with pseuodo-random grade values between 1 and 10 in the form of:
+ * 			[name] [surname] [grade] [grade] [grade] [grade] [grade] [exam grade]
+ * 
+ * @param amount [number of data entries to be generated]
+ */
+
 void generate_speed_test_file(int amount) {
 	std::mt19937 mt(static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
 	std::uniform_int_distribution<int> dist(1, 10);
