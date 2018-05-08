@@ -73,10 +73,13 @@ void testTwoContainers(std::vector <studentaiInfo>& speedTestPass, int amount) {
 
 void testSingleContainer(std::vector <studentaiInfo>& speedTestPass, int amount) {
 	read_data_test(speedTestPass, amount);
-	std::vector<studentaiInfo> vargsai;
+	// std::vector<studentaiInfo> vargsai;
 
-	remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
-	speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
+	// remove_copy_if(speedTestPass.begin(), speedTestPass.end(), back_inserter(vargsai), Check_if_Pass);
+	// speedTestPass.erase(remove_if(speedTestPass.begin(), speedTestPass.end(), Check_if_Fail), speedTestPass.end());
+	std::vector<studentaiInfo>::iterator it = std::stable_partition(speedTestPass.begin(), speedTestPass.end(), Check_if_Pass);
+	std::vector<studentaiInfo> vargsai(it, speedTestPass.end());
+	speedTestPass.erase(it, speedTestPass.end());
 
 	std::sort(speedTestPass.rbegin(), speedTestPass.rend());
 	std::sort(vargsai.rbegin(), vargsai.rend());
