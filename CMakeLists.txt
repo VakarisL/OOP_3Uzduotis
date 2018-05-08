@@ -14,6 +14,7 @@ add_executable(
 	Main/TestFileWrite.cpp
 	Main/GenerateTestFile.cpp
 	Main/Headers/StudentaiInfo.h
+	Main/Headers/Timer.h
 	Main/Headers/Menu.h
 	Main/Headers/InfoFromFile.h
 	Main/Headers/Tests.h

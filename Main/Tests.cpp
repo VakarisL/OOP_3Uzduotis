@@ -1,9 +1,9 @@
 #include <iostream>
-#include <chrono>
 #include <vector>
 #include <algorithm>
 
 #include "../Main/Headers/Tests.h"
+#include "../Main/Headers/Timer.h"
 #include "../Main/Headers/TestFileRead.h"
 #include "../Main/Headers/TestFileWrite.h"
 #include "../Main/Headers/GenerateTestFile.h"
@@ -17,16 +17,12 @@
  */
 
 void SpeedTest(int amount, void (*method)(std::vector<studentaiInfo>&, int)) {
-	std::chrono::high_resolution_clock::time_point timeStart, timeEnd;
-	std::chrono::duration<double, std::milli> timeTaken;
 	generate_speed_test_file(amount);
-	timeStart = std::chrono::high_resolution_clock::now();
+	Timer t;
 	std::vector<studentaiInfo> speedTestPassV;
 	method(speedTestPassV, amount);
-	timeEnd = std::chrono::high_resolution_clock::now();
-	timeTaken = timeEnd - timeStart;
 	std::cout << amount << " irasu nuskaitymo, rusiavimo ir irasymo i faila trukme naudojant 'vector' konteinerius (sekundemis): "
-	          << (double)timeTaken.count() / 1000 << std::endl;
+	          << t.elapsed() << std::endl;
 	speedTestPassV.clear();
 }
 
