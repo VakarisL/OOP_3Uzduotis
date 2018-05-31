@@ -95,7 +95,7 @@ Programa užsidaro
 | 100000 | 1.58353s  | 1.64346s | 1.56424s|  1.56335s
 
 
-## Notable stuff
+## Not so Notable Stuff
 ### Switch statement
 ```C++
 switch (choice) {
