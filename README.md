@@ -93,3 +93,71 @@ Programa užsidaro
 | 1000 | 0.027073s | 0.019705s | 0.031253s|  0.031281s
 | 10000 | 0.153408s | 0.137174s | 0.171922s|  0.175059s
 | 100000 | 1.58353s  | 1.64346s | 1.56424s|  1.56335s
+
+
+## Notable stuff
+### Switch statement
+```C++
+switch (choice) {
+	case 1: {
+		std::vector<studentaiInfo> studentai;
+		read_data(studentai);
+		output(studentai);
+		break;
+	}
+	case 2: {
+		SpeedTest(10, test);
+		// [...]
+		break;
+	}
+	case 3: {
+		SpeedTest(10, testTwoContainers);
+		//[...]
+		break;
+	}
+	case 4: {
+		SpeedTest(10, testSingleContainer);
+		//[...]
+		break;
+	}
+	case 5: {
+		std::cout << "Bye bye!" << std::endl;
+		break;
+	}
+	default: {
+		std::cerr << "Ivyko switch klaida" << std::endl;
+	}
+	}
+```
+
+
+### studentaiInfo class
+```C++
+class studentaiInfo {
+  private:
+	std::string Vardas;
+	std::string Pavarde;
+	std::vector<int> nDarbai;
+	int Egzaminas;
+	double Vidurkis;
+	double Mediana;
+	double Galutinis_Balas;
+	void readStudent(std:: istream&);
+	void setVidurkis();
+	void setMediana();
+	void setGalutinisBalas();
+  public:
+	studentaiInfo() : Egzaminas(0), Vidurkis(0), Mediana(0), Galutinis_Balas(0) { }
+	studentaiInfo(std::istream& input) { readStudent(input); setVidurkis(); setGalutinisBalas();}
+	inline std::string vardas() const {return Vardas;}
+	inline std::string pavarde() const {return Pavarde;}
+	inline std::vector<int> pazymiai() const {return nDarbai;}
+	inline int egzaminas() const {return Egzaminas;}
+	inline double average() const {return Vidurkis;}
+	inline double median() const {return Mediana;}
+	inline double galBalas() const {return Galutinis_Balas;}
+	friend std::ostream& operator<<(std::ostream&, const studentaiInfo&);
+	inline bool operator<(const studentaiInfo& a) const {return (galBalas() < a.galBalas());}
+	inline bool operator==(const studentaiInfo& a) const {return (galBalas() == a.galBalas());}
+};
+```
