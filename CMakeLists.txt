@@ -21,4 +21,7 @@ add_executable(
 	Main/Headers/TestFileRead.h
 	Main/Headers/TestFileWrite.h
 	Main/Headers/GenerateTestFile.h
+
+	Main/Catch/catch.hpp
+	Main/Catch/unitTests.cpp
 )

@@ -6,12 +6,16 @@
 #include "../Main/Headers/studentaiInfo.h"
 #include "../Main/Headers/InfoFromFile.h"
 #include "../Main/Headers/Tests.h"
+
+#define CATCH_CONFIG_RUNNER
+#include "../Main/Catch/catch.hpp"
 /**
  * @brief 	contains the control structure of the program
  * @details displays the menu of choices for the user
  * 			uses selective structure to execute the chosen functionality
  */
-int main() {
+int main(int argc, char* argv[]) {
+
 	int choice = 0;
 	MainMenu(choice);
 
@@ -55,6 +59,10 @@ int main() {
 	}
 	}
 
-	return 0;
+	Catch::Session session;
+	int returnCode = session.applyCommandLine( argc, argv );
+    if( returnCode != 0 )
+        return returnCode;
+	return session.run();
 }
 

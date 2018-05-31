@@ -10,7 +10,7 @@
  * @details takes the istream and tries to read values for the class object, if the file doesn't match the expected format
  * 			([name] [surname] [grade] [grade] [grade] [grade] [grade] [exam grade])
  * 			the program notifies the user and terminates.
- * 
+ *
  * @param input [input stream of file form which the data will be collected]
  */
 
